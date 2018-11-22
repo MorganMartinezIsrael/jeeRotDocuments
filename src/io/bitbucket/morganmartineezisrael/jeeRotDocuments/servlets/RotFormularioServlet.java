@@ -147,7 +147,7 @@ public void displayForm(HttpServletRequest request, HttpServletResponse response
     	}
 			
     	htmlDocument.append("<hr>");
-    	htmlDocument.append("<a href=\"/pw02/RotFormularioServlet\">Nuevo.</>");
+    	htmlDocument.append("<a href=\".\">Nuevo.</>");
     	htmlDocument.append("</div>");	
     	htmlDocument.append("</body>");
     	htmlDocument.append("</html>");
@@ -160,13 +160,11 @@ public void displayForm(HttpServletRequest request, HttpServletResponse response
     
    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		       
-				
-		
-				// TODO Auto-generated method stub
-				response.setCharacterEncoding("UTF-8");
-				PrintWriter out = response.getWriter();
-				this.displayForm(request, response);
+
+		// TODO Auto-generated method stub
+		response.setCharacterEncoding("UTF-8");
+		PrintWriter out = response.getWriter();
+		this.displayForm(request, response);
 							
 	}
 
