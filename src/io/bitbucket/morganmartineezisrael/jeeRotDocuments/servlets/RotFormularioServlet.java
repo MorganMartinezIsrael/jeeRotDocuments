@@ -2,26 +2,15 @@ package io.bitbucket.morganmartineezisrael.jeeRotDocuments.servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import io.bitbucket.morganmartineezisrael.jeeRotDocuments.generadores.DocumentoCsv;
-import io.bitbucket.morganmartineezisrael.jeeRotDocuments.generadores.DocumentoHtml;
-import io.bitbucket.morganmartineezisrael.jeeRotDocuments.generadores.DocumentoJson;
-import io.bitbucket.morganmartineezisrael.jeeRotDocuments.generadores.DocumentoXml;
 import io.bitbucket.morganmartineezisrael.jeeRotDocuments.utilerias.Encryption;
 
-
-
-/**
- * Servlet implementation class RotFormularioServlet
- */
 @WebServlet(
 			urlPatterns= {
 					"/RotFormularioServlet",
@@ -30,8 +19,7 @@ import io.bitbucket.morganmartineezisrael.jeeRotDocuments.utilerias.Encryption;
 		)
 public class RotFormularioServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private String inputStringGlobal;
-    private String textEncryptedGlobal;
+    
 public void displayForm(HttpServletRequest request, HttpServletResponse response) throws IOException{
     	
     	//Configure response
@@ -105,6 +93,7 @@ public void displayForm(HttpServletRequest request, HttpServletResponse response
     	if(textEncrypted.equals("")) {
     		htmlDocument.append("<h3>Please enter text</h3>");
     	}else {
+			
     		//same form
 	    	htmlDocument.append("<div class=\"contenedor-principal\">");
 	    	htmlDocument.append("<form method=\"POST\" action=\"RotFormularioServlet\" class=\"formulario\">");
@@ -124,6 +113,7 @@ public void displayForm(HttpServletRequest request, HttpServletResponse response
 	    	htmlDocument.append("</form>");
 	    	
 	    	//links as buttons inside forms
+	    	
 	    	htmlDocument.append("<form method=\"POST\" action=\"GenerateDocumentServlet?formato=csv\" class=\"formularioButton\">");
 	    	htmlDocument.append("<input type=\"hidden\" name=\"input-hidden-plain\" value=\""+inputText+ "\""+ ">");
 	    	htmlDocument.append("<input type=\"hidden\" name=\"input-hidden-encript\" value=\""+textEncrypted+ "\""+ ">");
@@ -134,13 +124,25 @@ public void displayForm(HttpServletRequest request, HttpServletResponse response
 	    	htmlDocument.append("<form method=\"POST\" action=\"GenerateDocumentServlet?formato=xml\" class=\"formularioButton\">");
 	    	htmlDocument.append("<input type=\"hidden\" name=\"input-hidden-plain\" value=\""+inputText+ "\""+ ">");
 	    	htmlDocument.append("<input type=\"hidden\" name=\"input-hidden-encript\" value=\""+textEncrypted+ "\""+ ">");
-	    	htmlDocument.append("<button type=\"submit\" id=\"submit-button-csv\" name=\"submit-button-xml\" value=\"submit button\">XML</button>");
+	    	htmlDocument.append("<button type=\"submit\" id=\"submit-button-xml\" name=\"submit-button-xml\" value=\"submit button\">XML</button>");
 	    	htmlDocument.append("</form>");
 	    	
 	    	htmlDocument.append("<form method=\"POST\" action=\"GenerateDocumentServlet?formato=json\" class=\"formularioButton\">");
 	    	htmlDocument.append("<input type=\"hidden\" name=\"input-hidden-plain\" value=\""+inputText+ "\""+ ">");
 	    	htmlDocument.append("<input type=\"hidden\" name=\"input-hidden-encript\" value=\""+textEncrypted+ "\""+ ">");
-	    	htmlDocument.append("<button type=\"submit\" id=\"submit-button-csv\" name=\"submit-button-xml\" value=\"submit button\">JSON</button>");
+	    	htmlDocument.append("<button type=\"submit\" id=\"submit-button-json\" name=\"submit-button-xml\" value=\"submit button\">JSON</button>");
+	    	htmlDocument.append("</form>");
+	    	
+	    	htmlDocument.append("<form method=\"POST\" action=\"GenerateDocumentServlet?formato=pdf\" class=\"formularioButton\">");
+	    	htmlDocument.append("<input type=\"hidden\" name=\"input-hidden-plain\" value=\""+inputText+ "\""+ ">");
+	    	htmlDocument.append("<input type=\"hidden\" name=\"input-hidden-encript\" value=\""+textEncrypted+ "\""+ ">");
+	    	htmlDocument.append("<button type=\"submit\" id=\"submit-button-pdf\" name=\"submit-button-pdf\" value=\"submit button\">PDF</button>");
+	    	htmlDocument.append("</form>");
+	    	
+	    	htmlDocument.append("<form method=\"POST\" action=\"GenerateDocumentServlet?formato=xlsx\" class=\"formularioButton\">");
+	    	htmlDocument.append("<input type=\"hidden\" name=\"input-hidden-plain\" value=\""+inputText+ "\""+ ">");
+	    	htmlDocument.append("<input type=\"hidden\" name=\"input-hidden-encript\" value=\""+textEncrypted+ "\""+ ">");
+	    	htmlDocument.append("<button type=\"submit\" id=\"submit-button-xlsx\" name=\"submit-button-xlsx\" value=\"submit button\">XLSX</button>");
 	    	htmlDocument.append("</form>");
 	    	
 	        
