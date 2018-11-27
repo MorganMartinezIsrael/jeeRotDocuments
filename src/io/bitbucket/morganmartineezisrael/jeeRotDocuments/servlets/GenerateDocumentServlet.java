@@ -59,25 +59,28 @@ public class GenerateDocumentServlet extends HttpServlet {
 			outCsv.println(DocumentoCsv.generateCsv(inputText, textEncrypted));
 			break;
 		case "xml":
-			System.out.println("formato xml solicitado");
-			String textaux = inputText;
-	    	for(int i = 0; i<textaux.length();){
-				if(inputText.charAt(i) == '<'){
-					inputText = inputText.replace("<", "&lt");
-					textEncrypted = textEncrypted.replace("<", "&lt");
-					System.out.println("has an < character!");
-					System.out.println("now word is: " + textEncrypted);
-					i+=2;
-				}else if(inputText.charAt(i) == '>'){
-					inputText = inputText.replace(">", "&gt");
-					textEncrypted = textEncrypted.replace(">", "&gt");
-					i+=2;
-				}else if(inputText.charAt(i) == '&'){
-					inputText = inputText.replace("&", "&amp");
-					textEncrypted = textEncrypted.replace("&", "&amp");
-					i+=3;
-				}
-			}
+			System.out.println("formato xml solicitado");			
+			System.out.println(" caracter : \"");
+			inputText = inputText.replaceAll("&", "&amp;");
+			textEncrypted = textEncrypted.replaceAll("&", "&amp;");
+			
+			inputText = inputText.replaceAll("'", "&apos;");
+			textEncrypted = textEncrypted.replaceAll("'", "&apos;");
+			
+			inputText = inputText.replaceAll("\"", "&quot;");
+			textEncrypted = textEncrypted.replaceAll("\"", "&quot;");
+			
+			inputText = inputText.replace("<", "&lt;");
+			textEncrypted = textEncrypted.replaceAll("<", "&lt;");
+		
+			inputText = inputText.replace(">", "&gt;");
+			textEncrypted = textEncrypted.replaceAll(">", "&gt;");
+			
+			
+			System.out.println("new input text : " + inputText);
+			System.out.println("new text encrypted : " + textEncrypted);
+				
+			
 	    	PrintWriter outXml = response.getWriter();
 			response.setContentType("application/xml");
 			response.setHeader("Content-Disposition", "inline; filename=\"encrip.xml\"");

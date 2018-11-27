@@ -101,13 +101,13 @@ public void displayForm(HttpServletRequest request, HttpServletResponse response
 	    	htmlDocument.append("<div>");
 	        //htmlDocument.append("<label for=\"input-texto-plano\">Texto plano</label>");
 	        htmlDocument.append("<textarea  id=\"input-texto-plano\" name=\"input-texto-plano\" ");
-	        htmlDocument.append("value=\""+ inputText +"\""+ "placeholder=\"Escriba texto aqui\" >"+ inputText+"</textarea>");
+	        htmlDocument.append("value=\"\""+ "placeholder=\"Escriba texto aqui\" >"+ inputText+"</textarea>");
 	        htmlDocument.append("</div>");
 	        htmlDocument.append("<button type=\"submit\" id=\"submit-button\" name=\"submit-button\" value=\"submit button\">Convertir</button>");
 	        htmlDocument.append("<div>");
 	        //htmlDocument.append("<label for=\"input-texto-encryptado\">Texto encryptado</label>");
 	        htmlDocument.append("<textarea id=\"input-texto-encryptado\" name=\"input-texto-encryptado\" ");
-	        htmlDocument.append("value=\""+textEncrypted+ "\""+" placeholder=\"Escriba texto aqui\" >"+textEncrypted+"</textarea>");
+	        htmlDocument.append("value=\"\""+" placeholder=\"Escriba texto aqui\" >"+textEncrypted+"</textarea>");
 	        htmlDocument.append("</div>");
 	    	htmlDocument.append("</fielset>");
 	    	htmlDocument.append("</form>");
